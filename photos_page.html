@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photos</title>
+    <link rel="stylesheet" href="./estilos/style2.css">
+</head>
+<body>
+    <header class="cabeca">
+       <h1 class="titulos">My Little<strong class="ggggg"> Universe</strong></h1>
+        <nav class="cabeca_menu">
+           
+            <a class="cabeca_menu_link" href="./index5.html">Home</a>
+            <!-- <a class="cabeca_menu_link" href="./art_page.html">Art</a>
+            <a class="cabeca_menu_link" href="./music_page.html">Music</a> -->
+            <a class="cabeca_menu_link" href="./photos_page.html">Photos</a>
+            <!-- <a class="cabeca_menu_link" href="./projects_page.html">Projects</a>
+            <a class="cabeca_menu_link" href="./contact_page.html">Contact</a>
+             -->
+        </nav>
+    </header>
+
+    <main>
+        <section class="galeria__completa">
+    
+            <div class="galeria">
+                <img src="./Imagens-Raw-Portifolio/DSC01868.jpg" alt="Foto 1">
+                <img src="./Imagens-Raw-Portifolio/DSC01925.jpg" alt="Foto 2">
+                <img src="./Imagens-Raw-Portifolio/DSC04398.jpg" alt="Foto 3">
+                <img src="./Imagens-Raw-Portifolio/DSC04948.jpg" alt="Foto 4">
+                <img src="./Imagens-Raw-Portifolio/DSC05827.jpg" alt="Foto 5">
+                <img src="./Imagens-Raw-Portifolio/DSC05832.jpg" alt="Foto 6">
+                <img src="./Imagens-Raw-Portifolio/DSC05836.jpg" alt="Foto 7">
+                <img src="./Imagens-Raw-Portifolio/DSC05839.jpg" alt="Foto 8">
+                <img src="./Imagens-Raw-Portifolio/DSC06825.jpg" alt="Foto 9">
+                <img src="./Imagens-Raw-Portifolio/IMG_0079.jpg" alt="Foto 10">
+                <img src="./Imagens-Raw-Portifolio/IMG_1469.jpg" alt="Foto 11">
+            </div>
+            
+        </section>
+    </main>
+
+    <div class="lightbox" id="lightbox">
+<span class="lightbox-seta" id="lightbox-anterior">&#8249;</span>
+        <img class="lightbox-img" id="lightbox-img" src="" alt="">
+        <span class="lightbox-seta" id="lightbox-proximo">&#8250;</span>
+    </div>
+
+    <footer>
+        <p class="rodape">© 2026 - Gustavo Lecce</p>
+    </footer>
+    <script>
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+        const anterior = document.getElementById('lightbox-anterior');
+        const proximo = document.getElementById('lightbox-proximo');
+
+        const fotos = Array.from(document.querySelectorAll('.galeria img'));
+        let indiceAtual = 0;
+
+        function abrirLightbox(indice) {
+            indiceAtual = indice;
+            lightboxImg.src = fotos[indiceAtual].src;
+            lightboxImg.alt = fotos[indiceAtual].alt;
+            lightbox.classList.add('ativo');
+        }
+
+        function fecharLightbox() {
+            lightbox.classList.remove('ativo');
+        }
+
+        fotos.forEach((img, i) => {
+            img.addEventListener('click', () => abrirLightbox(i));
+        });
+
+        anterior.addEventListener('click', (e) => {
+            e.stopPropagation();
+            abrirLightbox((indiceAtual - 1 + fotos.length) % fotos.length);
+        });
+
+        proximo.addEventListener('click', (e) => {
+            e.stopPropagation();
+            abrirLightbox((indiceAtual + 1) % fotos.length);
+        });
+
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) fecharLightbox();
+        });
+
+        let trocando = false;
+        lightbox.addEventListener('wheel', (e) => {
+            e.preventDefault();
+            if (trocando) return;
+            if (e.deltaX > 30) {
+                trocando = true;
+                abrirLightbox((indiceAtual + 1) % fotos.length);
+                setTimeout(() => trocando = false, 600);
+            } else if (e.deltaX < -30) {
+                trocando = true;
+                abrirLightbox((indiceAtual - 1 + fotos.length) % fotos.length);
+                setTimeout(() => trocando = false, 600);
+            }
+        }, { passive: false });
+
+        document.addEventListener('keydown', (e) => {
+            if (!lightbox.classList.contains('ativo')) return;
+            if (e.key === 'ArrowRight') abrirLightbox((indiceAtual + 1) % fotos.length);
+            if (e.key === 'ArrowLeft') abrirLightbox((indiceAtual - 1 + fotos.length) % fotos.length);
+            if (e.key === 'Escape') fecharLightbox();
+        });
+    </script>
+</body>
+</html>
