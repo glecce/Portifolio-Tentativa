@@ -110,6 +110,27 @@
             if (e.key === 'ArrowLeft') abrirLightbox((indiceAtual - 1 + fotos.length) % fotos.length);
             if (e.key === 'Escape') fecharLightbox();
         });
+
+        let toqueInicioX = 0;
+        let toqueInicioY = 0;
+
+        lightbox.addEventListener('touchstart', (e) => {
+            toqueInicioX = e.touches[0].clientX;
+            toqueInicioY = e.touches[0].clientY;
+        }, { passive: true });
+
+        lightbox.addEventListener('touchend', (e) => {
+            const deltaX = e.changedTouches[0].clientX - toqueInicioX;
+            const deltaY = e.changedTouches[0].clientY - toqueInicioY;
+
+            if (Math.abs(deltaX) < 40 || Math.abs(deltaX) < Math.abs(deltaY)) return;
+
+            if (deltaX < 0) {
+                abrirLightbox((indiceAtual + 1) % fotos.length);
+            } else {
+                abrirLightbox((indiceAtual - 1 + fotos.length) % fotos.length);
+            }
+        }, { passive: true });
     </script>
 </body>
 </html>

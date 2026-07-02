@@ -232,6 +232,7 @@ img[src="/Users/gustavo/Desktop/Tentativa/Schopenhauer.png"] {
     justify-content: center;
     align-items: center;
     z-index: 1000;
+    touch-action: pan-y;
 }
 
 .lightbox.ativo {
