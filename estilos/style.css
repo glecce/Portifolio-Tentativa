@@ -1,5 +1,12 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap');
+
+:root {
+    --cor-primaria: #2967cb;
+    --cor-secundaria: #ff6200;
+    --cor-fundo: #000000d5;
+    --cor-texto: #E5CB90;
+    --fonte-principal: 'Dancing Script', cursive;
+}
 
 
 * {
@@ -11,16 +18,18 @@
 body {
     min-height: 100vh;
     box-sizing: border-box;
-    background-color: rgb(92, 117, 170);
-    color: white;
+    background-color: var(--cor-fundo);
+    color: var(--cor-texto);
     display: flex;
     flex-direction: column;
+    
 }
 
-main {
-    flex: 1;
-    height: 100%;
-
+.apresentacao {
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    
 }
 
 
@@ -28,123 +37,297 @@ main {
     text-align: center;
     margin-top: 20px;
     margin-bottom: 20px;
-    font-family: "Dancing Script", cursive;
-    font-optical-sizing: auto;
-    font-weight: weight;
-    font-style: normal;
+    font-family: var(--fonte-principal);
+    font-size: 3rem;
+
 }
 
 h1 {
     text-align: center;
-    font-size: 3em;
+    font-size: 4rem;
     margin-top: 20px;
+    flex-direction: column;
+}
+
+@keyframes arco-iris {
+    0%   { background-position: 200% center; }
+    100% { background-position: 0% center; }
 }
 .ggggg {
-    color: rgb(154, 37, 162);
-    font-size: 50px;   
+    color: var(--cor-primaria);
+    font-size: 6.8rem;
 }
-nav {
+.ggggg:hover {
+    background: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet, red);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: arco-iris 2s linear infinite;
+}
+
+
+
+.cabeca {
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-family: var(--fonte-principal);
+}
+
+.cabeca_menu {
     text-align: center;
     display: flex;
     justify-content: center;
-    gap: 30px;
-    margin-top: 30px;
+    gap: 200px;
+    padding: 10px 20px;
 }
 
-a {
-    text-align: center;
-    color: white;
+.cabeca_menu_link {
+    background: none;
+    border: none;
+    color: var(--cor-texto);
+    font-size: 2rem;
+    font-family: var(--fonte-principal);
+    cursor: pointer;
+    padding: 6px 16px;
     text-decoration: none;
-    font-size: 1.2em;
-    
-    margin: 0 10px;
-    cursor: pointer;
-}  
-button {
+}
 
-    text-align: center;
-    background-color: rgb(154, 37, 162);
-    color: white;
-    border: 1px solid rgb(255, 255, 255);
+.cabeca_menu_link:hover {
+    background-color: var(--cor-primaria);
     border-radius: 10px;
-    padding: 10px 20px;
-    font-size: 1em;
-    cursor: pointer;
-    
+    transform: scale(1.05);
+    transition: transform 0.2s ease;
 }
 
 h2 {
     text-align: center;
-    font-size: 2em;
-    margin-top: 10px;
+    font-size: 2.5rem;
+    margin-top: 20px;
+    color: var(--cor-texto);
 }
 
 p {
     text-align: center;
-    font-size: 1.2em;
+    font-size: 2rem;
     margin-top: 10px;
-}
-
-footer
-    {
-        font-size: 1em;
-        text-align: center;
-        margin-top: 20px;
-        padding: 10px;
-        background-color: rgb(154, 37, 162);
-        color: white;
-    }
-
-.apresentacao {
-    margin: 10% 40%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-direction: column;
-    gap: 20px;
-}  
-
-.apre__conteudo {
-    text-align: center;
-    font-size: 40px;
-    margin-top: 20px;
-}
-
-
-
-.contact {
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-    margin-top: 30px;
     margin-bottom: 20px;
 }
 
-.contact a {
-    background-color: rgb(154, 37, 162);
-    padding: 10px 25px;
-    border: 1px solid rgb(255, 255, 255);
-    border-radius: 10px;
-    flex-direction: column;
+h3 {
+    text-align: center;
+    font-size: 1.3rem;
+    margin-top: 10px;
+    margin-bottom: 20px;
 }
 
-section {
+
+main {
+    flex: 1;
     display: flex;
     flex-direction: row;
     align-items: center;
     gap: 40px;
+    padding: 10px 60px;
 }
 
-h3 {
+section {
+    flex: 1;
+    min-width: 0;
     display: flex;
-    justify-content: center;
-    flex-direction: row;
-
-    text-align: center;
-
-    font-size: 20px;
-    margin-top: 20px;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
 }
 
+.contact {
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.contact-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    text-decoration: none;
+    color: var(--cor-texto);
+    font-size: 1.2rem;
+    margin-top: 10px;
+}
+
+.contact-link:hover {
+
+    transition: background-color 500ms ease;
+    transform: scale(1.1);
+    padding: 3%
+
+}
+.contact-link img {
+    height: 28px;
+    width: 28px;
+    object-fit: contain;
+}
+
+.contact a {
+    background-color: var(--cor-primaria);
+    padding: 10px 20px;
+    border: 1px solid var(--cor-texto);
+    border-radius: 10px;
+   
+}
+
+img[src="/Users/gustavo/Desktop/Tentativa/Schopenhauer.png"] {
+    display: block;
+    width: clamp(200px, 35vw, 450px);
+    height: auto;
+    flex-shrink: 0;
+}
+
+.galeria__completa 
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding: 20px;
+    width: 100%;
+}
+.galeria {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 12px;
+    padding: 20px;
+    width: 100%;
+}
+
+.galeria img {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.galeria img:hover {
+    transform: scale(1.03);
+    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.4), 0 8px 20px rgba(0, 0, 0, 0.6);
+    z-index: 2;
+}
+
+.lightbox {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.85);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.lightbox.ativo {
+    display: flex;
+}
+
+.lightbox-img {
+    max-width: 90vw;
+    max-height: 90vh;
+    object-fit: contain;
+    border-radius: 8px;
+}
+
+.lightbox-fechar {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    font-size: 2.5rem;
+    color: white;
+    cursor: pointer;
+    line-height: 1;
+}
+
+.lightbox-fechar:hover {
+    color: var(--cor-primaria);
+}
+
+.lightbox-seta {
+    font-size: 3rem;
+    color: white;
+    cursor: pointer;
+    padding: 0 20px;
+    user-select: none;
+}
+
+.lightbox-seta:hover {
+    color: var(--cor-primaria);
+    transform: translateX(5px);
+}
+
+footer {
+    background-color: var(--cor-primaria);
+    text-align: center;
+}
+
+footer:hover {
+    background: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet, red);
+    background-size: 200% auto;
+    animation: arco-iris 2s linear infinite;
+}
+
+
+
+.rodape {
+    font-size: 1.25rem;
+    text-align: center;
+    padding: 10px 10px;
+    color: var(--cor-texto);
+}
+
+@media (max-width: 768px) {
+    .apresentacao {
+        flex-direction: column-reverse;
+        padding: 5%;
+    }
+
+    section {
+        width: auto;
+    }
+
+
+    img[src="/Users/gustavo/Desktop/Tentativa/Schopenhauer.png"] {
+        width: clamp(150px, 60vw, 300px);
+    }
+
+    .cabeca {
+        padding: 5%;
+        justify-content: center;
+    
+    }
+     
+    .cabeca_menu {
+        gap: 80px;
+        padding: 5px 10px;
+        justify-content: center;
+    }
+
+    h1 {
+        font-size: 2.7rem;
+    }
+
+    .ggggg {
+        font-size: 5rem;
+    }
+
+    p {
+        font-size: 1.5rem;
+    }
+}
