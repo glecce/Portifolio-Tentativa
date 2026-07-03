@@ -93,14 +93,14 @@
         lightbox.addEventListener('wheel', (e) => {
             e.preventDefault();
             if (trocando) return;
-            if (e.deltaX > 30) {
+            if (e.deltaX > 14) {
                 trocando = true;
                 abrirLightbox((indiceAtual + 1) % fotos.length);
-                setTimeout(() => trocando = false, 600);
-            } else if (e.deltaX < -30) {
+                setTimeout(() => trocando = false, 300);
+            } else if (e.deltaX < -14) {
                 trocando = true;
                 abrirLightbox((indiceAtual - 1 + fotos.length) % fotos.length);
-                setTimeout(() => trocando = false, 600);
+                setTimeout(() => trocando = false, 300);
             }
         }, { passive: false });
 
@@ -123,7 +123,7 @@
             const deltaX = e.changedTouches[0].clientX - toqueInicioX;
             const deltaY = e.changedTouches[0].clientY - toqueInicioY;
 
-            if (Math.abs(deltaX) < 40 || Math.abs(deltaX) < Math.abs(deltaY)) return;
+            if (Math.abs(deltaX) < 20 || Math.abs(deltaX) < Math.abs(deltaY)) return;
 
             if (deltaX < 0) {
                 abrirLightbox((indiceAtual + 1) % fotos.length);
